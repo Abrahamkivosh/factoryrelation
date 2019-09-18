@@ -8,12 +8,27 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Reallifechat;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+
+use App\Mail\SendEmail;
 
 class ReallifechatController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');
+    }
+
+    public function mail()
+    {
+        $email = Auth::user()->email ;
+        $message = "i love what i do";
+        $user = Auth::user();
+        Mail::to($email)->send(new SendEmail($message,$user));
+
+        return "Message sent" ;
+
+
     }
 
     public function index()

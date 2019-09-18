@@ -19,3 +19,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('chart', 'ReallifechatController');
 Route::get('send',  'ReallifechatController@send')->name('send');
+Route::get('mail',  'ReallifechatController@mail');
+
+Route::resource('customer', 'CustomerController');
